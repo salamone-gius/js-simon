@@ -8,25 +8,28 @@
 // * Individuate gli elementi di cui avete bisogno per realizzare il programma.
 
 
-// 1. Genero 5 numeri casuali tra 1 e 20 e li salvo nell'array randomNumbers:
+// 1. Visualizzare in pagina 5 numeri casuali. Da lì parte un timer di 30 secondi:
+// - inizializzo un array vuoto;
 const randomNumbers = [];
+// - imposto il numero di numeri (!) che dovrò generare/che l'utente dovrà inserire
+const simonNumbers = 3;
 // - FINTANTO CHE la lunghezza dell'array (randomNumbers.length) è minore di 5...
-while (randomNumbers.length < 3) {
+while (randomNumbers.length < simonNumbers) {
     // - ...genero un numero casuale tra 1 e 20;
     let random = Math.floor(Math.random() * 20 + 1);
     // - PER tutta la sua lunghezza, scorro tutti gli elementi dell'array;
     for (let i = 0; i <= randomNumbers.length; i++) {
         // - SE l'array NON include già il numero generato...
         if (!randomNumbers.includes(random)) {
-            // - ...inserisco il numero generato nell'array...
+            // - ...inserisco il numero generato nell'array randomNumbers...
             randomNumbers.push(random);
         // - ALTRIMENTI niente;
         } else {
         }
     }
 }
-// - mostro i 5 numeri generati automaticamente all'utente.
-alert(randomNumbers);
+// - mostro i numeri generati automaticamente all'utente.
+alert(`${"Simone dice:"} ${randomNumbers}`);
 
 
 // 2. Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt():
@@ -52,7 +55,26 @@ setTimeout(function() {
             userNumbers.push(userNumb);
         }
     }
+    // 3. Dopo che sono stati inseriti i numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati:
+    // - SEMPRE ALL'INTERNO DELLA TIMING FUNCTION (il compilatore mette la timing function in coda e continua ad eseguire tutto lo script. Se metto queste istruzioni fuori verranno eseguite prima dell'avvio della timing function);
+    // - inizializzo un array vuoto;
+    let guessedNumbers = [];
+    // - Scorrendo PER tutti gli elementi dell'array randomNumbers...
+    for (let i = 0; i < randomNumbers.length; i++) {
+        console.log("elemento corrente randomNumbers", randomNumbers[i]);
+        // - ...e  PER tutti gli elementi dell'array userNumbers...
+        for (let j = 0; j < userNumbers.length; j++) {
+            console.log("elemento corrente userNumbers", userNumbers[j]);
+            // - ...SE c'è qualche elemento in comune...
+            if (randomNumbers[i] === userNumbers[j]) {
+                // - ...lo aggiungo all'array guessedNumbers...
+                guessedNumbers.push(userNumbers[j]);
+            // - ALTRIMENTI niente;
+            } else {
+            }
+        }
+    }
+    // - comunico all'utente quanti e quali dei numeri da indovinare sono stati individuati;
+    alert(`${"Hai indovinato"} ${guessedNumbers.length} ${"numeri su"} ${simonNumbers} ${":"} ${guessedNumbers}`);
+    // - chiudo la timing function.
 }, (3 * 1000));
-
-
-// 3. Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
