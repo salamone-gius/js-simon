@@ -78,12 +78,12 @@ setTimeout(function() {
     // - SE l'utente ha indovinato tutti i numeri randomici...
     if (guessedNumbers.length == simonNumbers) {
         // - ...gli comunico il punteggio e gli dico che ha vinto...
-        alert(`${"Hai indovinato"} ${guessedNumbers.length} ${"numeri su"} ${simonNumbers} ${":"} ${guessedNumbers}`);
+        alert(`${"Hai indovinato"} ${guessedNumbers.length} ${"numeri su"} ${simonNumbers} ${"("}${guessedNumbers}${")"}`);
         alert("HAI VINTO!!!");
     // - ALTRIMENTI SE l'utente ha indovinato un solo numero...
     } else if (guessedNumbers.length == 1) {
         // - ...gli comunico il punteggio e gli dico che ha perso...
-        alert(`${"Hai indovinato"} ${guessedNumbers.length} ${"numero su"} ${simonNumbers} ${":"} ${guessedNumbers}`);
+        alert(`${"Hai indovinato"} ${guessedNumbers.length} ${"numero su"} ${simonNumbers} ${"("}${guessedNumbers}${")"}`);
         alert("hai perso...");
     // - ALTRIMENTI SE l'utente non ha indovinato nessun numero...
     } else if (guessedNumbers.length == 0) {
@@ -93,8 +93,8 @@ setTimeout(function() {
     // - ALTRIMENTI...
     } else {
         // - ...gli comunico il punteggio e gli dico che ha perso;
-        alert(`${"Hai indovinato"} ${guessedNumbers.length} ${"numeri su"} ${simonNumbers} ${":"} ${guessedNumbers}`);
+        alert(`${"Hai indovinato"} ${guessedNumbers.length} ${"numeri su"} ${simonNumbers} ${"("}${guessedNumbers}${")"}`);
         alert("hai perso...");
     }
     // - chiudo la timing function.
-}, (3 * 1000));
+}, (30 * 1000));
