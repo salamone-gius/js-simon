@@ -12,7 +12,7 @@
 // - inizializzo un array vuoto;
 const randomNumbers = [];
 // - imposto il numero di numeri (!) che dovrò generare/che l'utente dovrà inserire
-const simonNumbers = 3;
+const simonNumbers = 5;
 // - FINTANTO CHE la lunghezza dell'array (randomNumbers.length) è minore di 5...
 while (randomNumbers.length < simonNumbers) {
     // - ...genero un numero casuale tra 1 e 20;
@@ -75,6 +75,26 @@ setTimeout(function() {
         }
     }
     // - comunico all'utente quanti e quali dei numeri da indovinare sono stati individuati;
-    alert(`${"Hai indovinato"} ${guessedNumbers.length} ${"numeri su"} ${simonNumbers} ${":"} ${guessedNumbers}`);
+    // - SE l'utente ha indovinato tutti i numeri randomici...
+    if (guessedNumbers.length == simonNumbers) {
+        // - ...gli comunico il punteggio e gli dico che ha vinto...
+        alert(`${"Hai indovinato"} ${guessedNumbers.length} ${"numeri su"} ${simonNumbers} ${":"} ${guessedNumbers}`);
+        alert("HAI VINTO!!!");
+    // - ALTRIMENTI SE l'utente ha indovinato un solo numero...
+    } else if (guessedNumbers.length == 1) {
+        // - ...gli comunico il punteggio e gli dico che ha perso...
+        alert(`${"Hai indovinato"} ${guessedNumbers.length} ${"numero su"} ${simonNumbers} ${":"} ${guessedNumbers}`);
+        alert("hai perso...");
+    // - ALTRIMENTI SE l'utente non ha indovinato nessun numero...
+    } else if (guessedNumbers.length == 0) {
+        // - ...gli comunico che è un pollo e gli dico che ha perso...
+        alert("Non hai indovinato nessun numero. Pollo!");
+        alert("hai perso...");
+    // - ALTRIMENTI...
+    } else {
+        // - ...gli comunico il punteggio e gli dico che ha perso;
+        alert(`${"Hai indovinato"} ${guessedNumbers.length} ${"numeri su"} ${simonNumbers} ${":"} ${guessedNumbers}`);
+        alert("hai perso...");
+    }
     // - chiudo la timing function.
 }, (3 * 1000));
